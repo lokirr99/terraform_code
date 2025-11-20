@@ -1,21 +1,20 @@
-resource "aws_subnet" "private_subnet1a" {
-  depends_on = [ aws_vpc.srtechops_vpc ]
-  vpc_id     = aws_vpc.srtechops_vpc.id
-  cidr_block = var.private_subnet1a_cidr
-  map_public_ip_on_launch = false
+resource "aws_subnet" "private_subnet1" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "ap-south-1a"
+
   tags = {
-    Name = "private-subnet1a"
+    Name = "storage1"
   }
-  availability_zone = var.availability_zone1a
 }
 
-resource "aws_subnet" "private_subnet1b" {
-depends_on = [ aws_vpc.srtechops_vpc ]
-  vpc_id     = aws_vpc.srtechops_vpc.id
-  cidr_block = var.private_subnet1b_cidr
-  map_public_ip_on_launch = false
+
+resource "aws_subnet" "private_subnet2" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.3.0/24"
+  availability_zone = "ap-south-1b"
+
   tags = {
-    Name = "private-subnet1b"
+    Name = "storage2"
   }
-  availability_zone = var.availability_zone1b
 }
